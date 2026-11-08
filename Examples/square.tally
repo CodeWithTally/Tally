@@ -1,0 +1,6 @@
+set pen color to "purple"
+set pen size to 3
+
+repeat 6 times:
+    move forward 100
+    turn right 60
