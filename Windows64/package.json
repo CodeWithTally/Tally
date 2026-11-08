@@ -1,0 +1,9 @@
+{
+  "name": "tally-language",
+  "version": "0.4.1",
+  "private": true,
+  "description": "An English-like educational programming language",
+  "engines": {
+    "node": ">=18"
+  }
+}
