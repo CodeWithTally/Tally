@@ -1,7 +1,6 @@
 TALLY 0.4.1 — WINDOWS
 
 Install Tally-Setup-0.4.1-x64.exe on Windows 10/11 x64.
-No Node.js, Python, .NET or other runtime download is needed.
 
 Double-click a .tally program. It opens a console and waits for Enter at the end.
 Drawing commands open a separate native window. Close that window when done.
@@ -20,6 +19,3 @@ The default is unlimited; --max-steps 0 also means unlimited.
 
 Upgrading removes the old bundled Node.js runtime. Close running Tally programs
 before installing. Student examples and unrelated files are preserved.
-
-The build is unsigned. The Windows installer and GUI were cross-compiled and
-inspected but have not been executed on real Windows in the build environment.
