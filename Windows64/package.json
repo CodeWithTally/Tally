@@ -1,7 +1,10 @@
 {
   "name": "tally-language",
   "version": "0.4.1",
-  "private": true,
+  "private": false,
+  "scripts": {
+    "build": "node build.cjs",
+  },
   "description": "An English-like educational programming language",
   "engines": {
     "node": ">=18"
