@@ -1,0 +1,11 @@
+set distance to 5
+set pen color to "teal"
+set pen size to 2
+
+repeat 60 times:
+    move forward distance
+    turn right 90
+    add 4 to distance
+    wait 0.05 seconds
+
+say "Small steps add up."
