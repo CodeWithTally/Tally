@@ -1,0 +1,3 @@
+ask "What is your name?" and store in name
+say "Hello, {name}!"
+say "Welcome to Tally."
