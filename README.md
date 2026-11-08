@@ -200,7 +200,7 @@ Tally is an evolving educational project. Its language features and tooling may 
 
 ## Contributing and feedback
 
-Tally is developed by a small team, and feedback from students, teachers, and other developers is valuable.
+Tally is developed by a small team, with assistance from AI tools, including ChatGPT by OpenAI. Feedback from students, teachers, and other developers is valuable.
 
 You can help by:
 
@@ -208,7 +208,11 @@ You can help by:
 - Suggesting clearer error messages or simpler syntax.
 - Sharing beginner exercises and example programs.
 - Improving documentation and accessibility.
-- Testing the editor and describing where you got stuck.
+- Testing Tally and describing where you got stuck.
+
+### Acknowledgments
+
+- **Artificial Intelligence** has been partially used for writing code and debugging. 
 
 Use the repository's **Issues** tab to report a problem or share an idea. Before submitting a pull request, check the repository's contribution and licensing information.
 
