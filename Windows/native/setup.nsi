@@ -67,7 +67,7 @@ Page custom MaintenancePageCreate MaintenancePageLeave
 !define MUI_PAGE_CUSTOMFUNCTION_PRE SkipInstallIntroOnMaintenance
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
-!define MUI_FINISHPAGE_TEXT "Tally is now on your computer.$\r$\n$\r$\nOpen Tally Runner or Tally Examples from Start, or double-click any .tally program.$\r$\n$\r$\nMake something strange. Make something great."
+!define MUI_FINISHPAGE_TEXT "Tally is now on your computer.$\r$\n$\r$\nOpen Tally Runner from Start, or double-click any .tally program.$\r$\n$\r$\nMake something strange. Make something great."
 !insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
@@ -192,11 +192,8 @@ Section "Tally runner (required)" CORE
  File "${PAYLOAD}\tally-userpath.exe"
  File "${PAYLOAD}\THIRD-PARTY.txt"
  File "${PAYLOAD}\WINDOWS-START-HERE.txt"
- SetOutPath "$INSTDIR\examples"
- ; Preserve any student-edited example files during repair/update.
- SetOverwrite off
- File "${PAYLOAD}\examples\*.tally"
- SetOverwrite on
+ ; Examples are maintained separately in the GitHub repository.
+ ; Existing examples in an older installation are left untouched.
  WriteRegStr HKCU "Software\TallyLanguage" "InstallDir" "$INSTDIR"
  WriteRegStr HKCU "Software\TallyLanguage" "Version" "${TALLY_VERSION}"
  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\App Paths\tally.exe" "" "$INSTDIR\tally.exe"
@@ -210,7 +207,8 @@ Section "Tally runner (required)" CORE
  WriteRegDWORD HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\TallyLanguage" "NoRepair" 1
  CreateDirectory "$SMPROGRAMS\Tally"
  CreateShortCut "$SMPROGRAMS\Tally\Tally Runner.lnk" "$INSTDIR\tally.exe"
- CreateShortCut "$SMPROGRAMS\Tally\Tally Examples.lnk" "$INSTDIR\examples"
+ ; Remove any obsolete examples shortcut from a previous Tally install.
+ Delete "$SMPROGRAMS\Tally\Tally Examples.lnk"
  CreateShortCut "$SMPROGRAMS\Tally\Start here.lnk" "$INSTDIR\WINDOWS-START-HERE.txt"
  CreateShortCut "$SMPROGRAMS\Tally\Uninstall Tally.lnk" "$INSTDIR\Uninstall.exe"
 SectionEnd
@@ -240,7 +238,7 @@ Section "Add tally to your user PATH" PATH
  ${EndIf}
 SectionEnd
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
- !insertmacro MUI_DESCRIPTION_TEXT ${CORE} "Standalone native interpreter, drawing window, and examples."
+ !insertmacro MUI_DESCRIPTION_TEXT ${CORE} "Standalone native interpreter and drawing window."
  !insertmacro MUI_DESCRIPTION_TEXT ${ASSOC} "Double-click .tally programs to run; right-click to edit in Notepad."
  !insertmacro MUI_DESCRIPTION_TEXT ${PATH} "Use tally from a new terminal. Updates only your user's PATH."
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
@@ -283,7 +281,7 @@ Section "Uninstall"
  Delete "$INSTDIR\Uninstall.exe"
  RMDir "$INSTDIR\runtime"
  RMDir "$INSTDIR\dist"
- ; Preserve the examples folder and student edits.
+ ; Leave any examples from previous installations untouched.
  RMDir "$INSTDIR"
  Delete "$SMPROGRAMS\Tally\Tally Runner.lnk"
  Delete "$SMPROGRAMS\Tally\Tally Editor.lnk"
