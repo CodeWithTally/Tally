@@ -1,0 +1,11 @@
+set secret to random(1, 10)
+set guess to 0
+
+while guess is not secret:
+    ask "Guess a number from 1 to 10" and store as number in guess
+    if guess < secret:
+        say "Try higher!"
+    if guess > secret:
+        say "Try lower!"
+
+say "You found it!"
