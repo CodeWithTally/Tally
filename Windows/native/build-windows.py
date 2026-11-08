@@ -286,12 +286,9 @@ def build() -> None:
                 "Put it in the GitHub repository root or Windows folder."
             )
         shutil.copy2(source, OUT / name)
-    examples = REPO / "examples"
-    if not examples.is_dir():
-        examples = ROOT / "examples"
-    if not examples.is_dir() or not any(examples.glob("*.tally")):
-        raise FileNotFoundError(f"Expected .tally examples in {examples}")
-    shutil.copytree(examples, OUT / "examples")
+    # Examples belong to the shared GitHub repository, not the native installer.
+    # Intentionally do not look for, require, or bundle an examples/ directory.
+    # Above, stale examples from earlier build payloads are removed.
 
     # README is useful on GitHub but not a requirement for building the installer.
     readme = REPO / "README.md"
